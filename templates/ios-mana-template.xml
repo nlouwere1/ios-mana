@@ -1,21 +1,44 @@
 <config-template xmlns="http://tail-f.com/ns/config/1.0"
                  servicepoint="ios-mana">
   <devices xmlns="http://tail-f.com/ns/ncs">
-    <device>
-      <!--
-          Select the devices from some data structure in the service
-          model. In this skeleton the devices are specified in a leaf-list.
-          Select all devices in that leaf-list:
-      -->
-      <name>{/device}</name>
+  <device>
+    <name>{/device}</name>
       <config>
-        <!--
-            Add device-specific parameters here.
-            In this skeleton the service has a leaf "dummy"; use that
-            to set something on the device e.g.:
-            <ip-address-on-device>{/dummy}</ip-address-on-device>
-        -->
+        <logging xmlns="urn:ios">
+          <buffered>
+            <size>64000</size>
+            <severity>informational</severity>
+          </buffered>
+          <event>
+            <link-status>
+              <default/>
+            </link-status>
+          </event>
+          <hostname>
+            <host>{/server}</host>
+          </hostname>
+          <hostname>
+            <host>on</host>
+          </hostname>
+          <source-interface>
+            <Loopback>0</Loopback>
+          </source-interface>
+          <trap>informational</trap>
+        </logging>
+        <snmp-server xmlns="urn:ios">
+          <community>
+            <name>{/rocommunity}</name>
+            <access-list-name>ro</access-list-name>
+          </community>
+          <community>
+            <name>{/rwcommunity}</name>
+            <access-list-name>rw</access-list-name>
+          </community>
+          <ifindex>
+            <persist/>
+          </ifindex>
+        </snmp-server>
       </config>
-    </device>
+  </device>
   </devices>
 </config-template>

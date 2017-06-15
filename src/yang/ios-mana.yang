@@ -1,5 +1,5 @@
 module ios-mana {
-  namespace "http://com/example/iosmana";
+  namespace "http://com/example/ios-mana";
   prefix ios-mana;
 
   import ietf-inet-types {
@@ -27,8 +27,20 @@ module ios-mana {
     }
 
     // replace with your own stuff here
-    leaf dummy {
+    leaf rocommunity {
+      mandatory true;
+      type string;
+    }
+
+    leaf rwcommunity {
+      mandatory true;
+      type string;
+    }
+    leaf server {
+      mandatory true;
       type inet:ipv4-address;
     }
-  }
-}
+    }
+ }
+
+
