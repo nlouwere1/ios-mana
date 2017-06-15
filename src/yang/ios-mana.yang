@@ -1,0 +1,34 @@
+module ios-mana {
+  namespace "http://com/example/iosmana";
+  prefix ios-mana;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+
+  list ios-mana {
+    key name;
+
+    uses ncs:service-data;
+    ncs:servicepoint "ios-mana";
+
+    leaf name {
+      type string;
+    }
+
+    // may replace this with other ways of refering to the devices.
+    leaf-list device {
+      type leafref {
+        path "/ncs:devices/ncs:device/ncs:name";
+      }
+    }
+
+    // replace with your own stuff here
+    leaf dummy {
+      type inet:ipv4-address;
+    }
+  }
+}
