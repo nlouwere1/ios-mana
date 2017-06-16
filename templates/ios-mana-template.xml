@@ -6,8 +6,8 @@
       <config>
         <logging xmlns="urn:ios">
           <buffered>
-            <size>64000</size>
-            <severity>informational</severity>
+            <buffer-size>64000</buffer-size>
+            <severity-level>informational</severity-level>
           </buffered>
           <event>
             <link-status>
@@ -21,7 +21,7 @@
             <host>on</host>
           </hostname>
           <source-interface>
-            <Loopback>0</Loopback>
+            <name>loopback0</name>
           </source-interface>
           <trap>informational</trap>
         </logging>
