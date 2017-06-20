@@ -28,17 +28,22 @@ module ios-mana {
 
     // replace with your own stuff here
     leaf rocommunity {
-      mandatory true;
       type string;
+      default "rocommunity";
     }
 
     leaf rwcommunity {
-      mandatory true;
       type string;
+      default "rwcommunity";
     }
     leaf server {
       mandatory true;
       type inet:ipv4-address;
+    }
+    leaf ntpserver {
+      mandatory true;
+      type inet:ipv4-address;
+
     }
     }
  }

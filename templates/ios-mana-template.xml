@@ -38,6 +38,104 @@
             <persist/>
           </ifindex>
         </snmp-server>
+      <ntp xmlns="urn:ios">
+        <server>
+          <peer-list>
+            <name>{/ntpserver}</name>
+          </peer-list>
+        </server>
+      </ntp>
+      <ntp xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <server>
+          <server-list>
+            <name>{/ntpserver}</name>
+          </server-list>
+        </server>
+        <source>
+          <Loopback>0</Loopback>
+        </source>
+      </ntp>
+      <logging xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <trap>informational</trap>
+        <events>
+          <level>informational</level>
+          <link-status>software-interfaces</link-status>
+        </events>
+        <buffered>
+          <size>12345678</size>
+        </buffered>
+        <facility>local</facility>
+        <host>
+          <address>{/server}</address>
+          <severity>informational</severity>
+        </host>
+        <source-interface>
+          <Loopback>0</Loopback>
+        </source-interface>
+      </logging>
+      <service xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <timestamps>
+          <log>
+            <datetime>
+              <msec/>
+              <show-timezone/>
+              <year/>
+            </datetime>
+          </log>
+        </timestamps>
+      </service>
+      <domain xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <ipv4>
+          <host>
+            <host-name>epnm</host-name>
+            <address>{/server}</address>
+          </host>
+        </ipv4>
+      </domain>
+      <telnet xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <telnet-server-list>
+          <af>ipv4</af>
+          <server>
+            <max-servers>100</max-servers>
+          </server>
+        </telnet-server-list>
+      </telnet>
+      <vty-pool xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <default>
+          <first-vty>0</first-vty>
+          <last-vty>99</last-vty>
+        </default>
+      </vty-pool>
+      <ipv4 xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <virtual>
+          <address-src>
+            <address>
+              <use-as-src-addr/>
+            </address>
+          </address-src>
+        </virtual>
+      </ipv4>
+      <xxml xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <tty-agent>
+          <agent>
+            <tty/>
+          </agent>
+        </tty-agent>
+      </xxml>
+      <snmp-server xmlns="http://tail-f.com/ned/cisco-ios-xr">
+        <ifindex>persist</ifindex>
+        <entityindex>
+          <persist/>
+        </entityindex>
+        <community>
+          <name>{/rocommunity}</name>
+          <access-list>ro</access-list>
+        </community>
+        <community>
+          <name>{/rwcommunity}</name>
+          <access-list>systemowner</access-list>
+        </community>
+      </snmp-server>
       </config>
   </device>
   </devices>
